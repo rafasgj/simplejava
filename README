@@ -1,0 +1,13 @@
+Simple Java
+===========
+
+This project is a small framework to aid in teaching object oriented 
+programming using the Java programming language.
+
+The main objective is to reduce the number of concepts that need to 
+be understood in order to write Java programs. For example, one need 
+not need to know what a 'static method' is since there's no need to 
+write a 'main()' method for the program to work.
+
+This is in an early stages of development, and sugestions, bug fixes, 
+and critique is very much appreciated.
