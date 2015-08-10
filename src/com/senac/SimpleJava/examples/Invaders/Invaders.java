@@ -62,6 +62,9 @@ public class Invaders extends GraphicApplication {
 			enemies[i].setPosition(xenemy+x, y);
 			enemies[i].draw(canvas);
 		}
+		
+		canvas.setForeground(Color.WHITE);
+		canvas.putText(0, 0, 10, "Cthulhu Invaders");
 	}
 
 	@Override
@@ -72,7 +75,7 @@ public class Invaders extends GraphicApplication {
 
 	private void moveHero() {
 		int min = 10;
-		int max = getResolution().width - 10 - 30;
+		int max = getResolution().width - 10 - 40;
 		xhero += xherodelta;
 		if (xhero < min) {
 			xhero = min;
@@ -86,7 +89,7 @@ public class Invaders extends GraphicApplication {
 	
 	private void moveEnemies() {
 		int min = 10;
-		int max = getResolution().width - 10 - 35*5;
+		int max = getResolution().width - 10 - 40*5;
 		xenemy += xenemydelta;
 		if (xenemy < min) {
 			xenemy = min;

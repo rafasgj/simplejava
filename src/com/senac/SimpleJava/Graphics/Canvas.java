@@ -1,9 +1,12 @@
 package com.senac.SimpleJava.Graphics;
 
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.AbstractAction;
@@ -180,5 +183,17 @@ public class Canvas
 				action.handleEvent();
 			}
 		});
+	}
+	
+	public void putText(int x, int y, int size, String text)
+	{
+		Graphics g = img.getGraphics();
+		g.setColor(getForeground());
+		g.setFont(new Font("Arial",0,size));
+		FontMetrics fm = g.getFontMetrics();
+		Rectangle2D b = fm.getStringBounds(text, g);
+		g.drawString(text,
+				(int)(x-Math.round(b.getX())),
+				(int)(y-Math.round(b.getY())));
 	}
 }
