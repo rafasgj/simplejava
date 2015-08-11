@@ -2,6 +2,8 @@ package com.senac.SimpleJava.Graphics;
 
 import javax.swing.JFrame;
 
+import com.senac.SimpleJava.EventDrivenApplication;
+
 /**
  * This is the base class for all GraphicApplication (a.k.a. games) for
  * the SimpleJava framework.
@@ -11,8 +13,10 @@ import javax.swing.JFrame;
  * implement the parts required to execute the actual behavior through
  * the hook methods.
  */
-public abstract class GraphicApplication {
-	private boolean keepRunning;
+public abstract
+class GraphicApplication
+	extends EventDrivenApplication
+{
 	private int sleepTime;
 	
 	private Canvas canvas;
@@ -23,7 +27,6 @@ public abstract class GraphicApplication {
 	 * and display the main window.
 	 */
 	protected GraphicApplication() {
-		keepRunning = true;
 		sleepTime = 0;
 		win = new JFrame("Simple Java");
 		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,7 +76,7 @@ public abstract class GraphicApplication {
 	public void run() {
 		try {
 			setup();
-			while (keepRunning) {
+			while (shouldRun()) {
 				long s = System.currentTimeMillis(), e;
 				step();
 				draw(canvas);
@@ -90,14 +93,6 @@ public abstract class GraphicApplication {
 			e.printStackTrace(System.err);
 			System.exit(-1);
 		}
-	}
-
-	/**
-	 * Call this method to set the main loop to terminate as soon as
-	 * possible.
-	 */
-	protected void endLoop() {
-		keepRunning = false;
 	}
 	
 	/**
@@ -131,24 +126,9 @@ public abstract class GraphicApplication {
 	}
 	
 	/**
-	 * This method is called before the main loop begins and should be
-	 * used to setup the application.
-	 */
-	protected abstract void setup();
-	/**
-	 * This method is called in the start of the loop, and should be used
-	 * to control all the data of the application.
-	 */
-	protected abstract void step();
-	/**
 	 * This method is called just before the screen is redrawn, and
 	 * should be used to draw the application canvas.
 	 * @param canvas The canvas used to draw elements.
 	 */
 	protected abstract void draw(Canvas canvas);
-	/**
-	 * This method is called just before the application terminates and
-	 * is the last chance to recycle used resources.
-	 */
-	protected void cleanup() {}
 }
