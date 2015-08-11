@@ -1,4 +1,4 @@
-package com.senac.SimpleJava.examples.Graphics;
+package com.senac.SimpleJava.Graphics.examples;
 
 import com.senac.SimpleJava.Graphics.GraphicApplication;
 import com.senac.SimpleJava.Graphics.Canvas;

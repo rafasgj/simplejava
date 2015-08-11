@@ -1,4 +1,4 @@
-package com.senac.SimpleJava.examples.Graphics;
+package com.senac.SimpleJava.Graphics.examples;
 
 import java.io.IOException;
 

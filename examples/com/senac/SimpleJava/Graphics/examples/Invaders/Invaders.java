@@ -1,4 +1,4 @@
-package com.senac.SimpleJava.examples.Invaders;
+package com.senac.SimpleJava.Graphics.examples.Invaders;
 
 import java.io.IOException;
 

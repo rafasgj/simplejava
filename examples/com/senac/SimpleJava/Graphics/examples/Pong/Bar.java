@@ -1,4 +1,4 @@
-package com.senac.SimpleJava.examples.Pong;
+package com.senac.SimpleJava.Graphics.examples.Pong;
 
 import com.senac.SimpleJava.Graphics.Canvas;
 import com.senac.SimpleJava.Graphics.Color;
