@@ -35,6 +35,7 @@ public class Invaders extends GraphicApplication {
 			enemies = new Sprite[15];
 			for (int i =0; i < 15; i++) {
 				enemies[i] = new Sprite(img, Color.BLACK);
+				enemies[i].resize(30, 30);
 			}
 		} catch (IOException e) { die(e); }
 
@@ -75,7 +76,7 @@ public class Invaders extends GraphicApplication {
 
 	private void moveHero() {
 		int min = 10;
-		int max = getResolution().width - 10 - 40;
+		int max = getResolution().width - 10 - 30;
 		xhero += xherodelta;
 		if (xhero < min) {
 			xhero = min;
@@ -89,7 +90,7 @@ public class Invaders extends GraphicApplication {
 	
 	private void moveEnemies() {
 		int min = 10;
-		int max = getResolution().width - 10 - 40*5;
+		int max = getResolution().width - 10 - 35*5;
 		xenemy += xenemydelta;
 		if (xenemy < min) {
 			xenemy = min;
