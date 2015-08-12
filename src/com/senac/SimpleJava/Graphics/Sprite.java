@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Sprite
 	extends Image
-	implements Drawable, Movable
+	implements Drawable, Moveable, Resizeable
 {
 	private double x,y;
 	
@@ -165,5 +165,4 @@ public class Sprite
 		int iy = (int)Math.floor(y);
 		return new Rect(ix, iy, img.getWidth(), img.getHeight());
 	}
-	
 }
