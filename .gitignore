@@ -3,3 +3,11 @@
 
 # binary files
 bin/
+
+# javadoc documentation
+doc/*.html
+doc/*.css
+doc/com/
+doc/index-files/
+doc/script.js
+doc/package-list
