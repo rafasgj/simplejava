@@ -8,17 +8,27 @@ import java.util.Scanner;
 public final class Console {
 
 	private static final Scanner keyboard = new Scanner(System.in);
-	
+
+    private static
+    StringBuilder createStringFromObjectList(Object... args) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < args.length; i++) {
+	    		Object o = args[i];
+	    		if (o == null)
+	    			sb.append("(null)");
+	    		else
+	    			sb.append (args[i].toString());
+	    }
+        return sb;
+    }
+
 	/**
 	 * Print the string representations of all arguments to the
 	 * standard output.
 	 * @param arguments The list of arguments.
 	 */
 	public static void print(Object... arguments) {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < arguments.length; i++)
-			sb.append (arguments[i].toString());
-		System.out.print(sb);
+		System.out.print(createStringFromObjectList(arguments));
 	}
 	
 	/**
@@ -27,10 +37,7 @@ public final class Console {
 	 * @param arguments The list of arguments.
 	 */
 	public static void println(Object... arguments) {
-		StringBuilder sb = new StringBuilder();
-	    for (int i = 0; i < arguments.length; i++)
-	    		sb.append (arguments[i].toString());
-	    System.out.println(sb);
+		System.out.println(createStringFromObjectList(arguments));
 	}
 
 	/**
