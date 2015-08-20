@@ -50,6 +50,7 @@ public final class Console {
 	/**
 	 * Prompts for  a line of text from the standard input and returns
 	 * it as a single string.
+	 * @param prompt The prompt to show.
 	 * @return The text from the line read as input.
 	 */
 	public static String readLine(String prompt) {

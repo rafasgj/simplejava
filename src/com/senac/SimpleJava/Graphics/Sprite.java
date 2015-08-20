@@ -54,7 +54,6 @@ public class Sprite
 	 * objects (the original Image and the Sprite), and changing one
 	 * will affect the other. 
 	 * @param img The image to use as the sprite image.
-	 * @param background The color that will be rendered transparent. 
 	 */
 	public Sprite(Image img) {
 		this(img, Color.BLACK);
