@@ -97,4 +97,12 @@ public class Image
 		g.dispose();
 		img = i;
 	}	
+	
+	public int getWidth() {
+		return img.getWidth();
+	}
+	
+	public int getHeight() {
+		return img.getHeight();
+	}
 }
