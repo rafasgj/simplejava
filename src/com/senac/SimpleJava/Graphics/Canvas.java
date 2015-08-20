@@ -172,16 +172,17 @@ public class Canvas
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
 	 */
-	public void bindKey(String key, KeyboardAction action) {
-		InputMap im = getInputMap();
+	public void bindKey(String key, final KeyboardAction action) {
+		InputMap im = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = getActionMap();
-		im.put(KeyStroke.getKeyStroke(key), key+"_BINDED");
-		am.put(key+"_BINDED", new AbstractAction() {
+		KeyStroke ks = KeyStroke.getKeyStroke(key);
+		im.put(ks, key);
+		am.put(key, new AbstractAction() {
 			private static final long serialVersionUID = 1L;
+			private final KeyboardAction handler = action;
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				action.handleEvent();
-			}
+			public void actionPerformed(ActionEvent e)
+			{ handler.handleEvent(); }
 		});
 	}
 	
