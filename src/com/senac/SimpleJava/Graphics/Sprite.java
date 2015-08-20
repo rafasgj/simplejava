@@ -48,6 +48,19 @@ public class Sprite
 	}
 	
 	/**
+	 * Initializes a sprite with a given image and uses black as the
+	 * background color.
+	 * Note that the image data is then shared between multiple image
+	 * objects (the original Image and the Sprite), and changing one
+	 * will affect the other. 
+	 * @param img The image to use as the sprite image.
+	 * @param background The color that will be rendered transparent. 
+	 */
+	public Sprite(Image img) {
+		this(img, Color.BLACK);
+	}
+	
+	/**
 	 * Loads an image from a file and initializes a sprite with
 	 * that image and a given background color. 
 	 * @param filename The path to the image file.
@@ -59,6 +72,18 @@ public class Sprite
 	{
 		super(filename);
 		this.background = background;
+	}
+	
+	/**
+	 * Loads an image from a file and initializes a sprite with
+	 * that image and and uses black as the background color. 
+	 * @param filename The path to the image file.
+	 * @throws IOException If the file cannot be loaded.
+	 */
+	public Sprite(String filename)
+			throws IOException
+	{
+		this(filename,Color.BLACK);
 	}
 	
 	/**
