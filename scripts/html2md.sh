@@ -14,6 +14,7 @@ FILES="`find "${SRC}/" -name '*.html'`"
 
 for f in $FILES
 do
+    echo "Converting `echo "$f" | sed 's#//*#/#g'`."
     dir="${TARGET}/`dirname "$f"`"
     mkdir -p "${dir}/"
     pandoc -f html -t markdown -o "${dir}/`basename "$f" .html`.md" -s "$f"
