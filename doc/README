@@ -1,1 +1,6 @@
 Use javadoc to generate the classes documentation.
+
+From the project root level you can also run scripts/generate_docs.sh,
+that will do everything you need (using javadoc) do generate the project
+class reference.
+
