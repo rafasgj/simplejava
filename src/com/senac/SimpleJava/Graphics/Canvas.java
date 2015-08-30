@@ -95,6 +95,61 @@ public class Canvas
 	}
 	
 	/**
+	 * Draw a pixel on the screen with the current foreground
+	 * color in the given position.
+	 * @param point The position (x,y) to draw the pixel.
+	 */
+	public synchronized
+	void putPixel(Point point) {	
+		putPixel((int)point.x, (int)point.y,fg);
+	}
+	
+	/**
+	 * Draw a line between two points using the current drawing
+	 * color.
+	 * @param p0 The first point.
+	 * @param p1 The second point.
+	 */
+	public synchronized
+	void drawLine(Point p0, Point p1) {
+		drawLine((int)p0.x,(int)p0.y,(int)p1.x,(int)p1.y);
+	}
+	
+	/**
+	 * Draw a line between two points using the current drawing
+	 * color, with the Bresenhan's algorithm.
+	 * @param x0 The x coordinate of the first point.
+	 * @param y0 The y coordinate of the first point.
+	 * @param x1 The x coordinate of the second point.
+	 * @param y1 The y coordinate of the second point.
+	 */
+	public synchronized
+	void drawLine(int x0, int y0, int x1, int y1) {
+		if (x0 > x1) {
+			int t = x1;
+			x1 = x0;
+			x0 = t;
+		}
+		if (y0 > y1) {
+			int t = y1;
+			y1 = y0;
+			y0 = t;
+		}
+		int dx =  x1 - x0;
+		int dy =  y1 - y0;
+		int y = y0;
+		int e = 0;
+		for (int x = x0; x <= x1; x++) {
+			putPixel(x, y);
+			e += dy;
+			if ( 2*e >= dx) {
+				y++;
+				e -= dx;
+			}
+		}
+	}
+	
+	/**
 	 * Draw an image in a given position.
 	 * @param image The image to draw.
 	 * @param x The x coordinate.
