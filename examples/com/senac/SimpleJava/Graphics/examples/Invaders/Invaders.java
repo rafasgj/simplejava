@@ -135,7 +135,7 @@ public class Invaders extends GraphicApplication {
 	}
 	
 	@Override
-	protected void step() {
+	protected void loop() {
 		moveHero();
 		moveEnemies();
 		if (DEMO_MODE) {
@@ -145,6 +145,8 @@ public class Invaders extends GraphicApplication {
 			if (!hitEnemy())
 				moveShot();
 		}
+		
+		redraw();
 	}
 	
 	private boolean hitEnemy() {

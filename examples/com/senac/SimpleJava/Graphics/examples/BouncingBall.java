@@ -35,7 +35,7 @@ public class BouncingBall
 	}
 	
 	@Override
-	public void step() {
+	public void loop() {
 		moveX();
 		moveY();
 	}

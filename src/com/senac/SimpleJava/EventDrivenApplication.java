@@ -21,7 +21,7 @@ class EventDrivenApplication
 		try {
 			setup();
 			while (keepRunning) {
-				step();
+				loop();
 			}
 			cleanup();
 		} catch(Exception e) {
@@ -56,7 +56,7 @@ class EventDrivenApplication
 	 * This method is called in the start of the loop, and should be used
 	 * to control all the data of the application.
 	 */
-	protected abstract void step();
+	protected abstract void loop();
 	/**
 	 * This method is called just before the application terminates and
 	 * is the last chance to recycle used resources.

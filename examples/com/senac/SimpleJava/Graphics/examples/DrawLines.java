@@ -24,9 +24,8 @@ public class DrawLines extends GraphicApplication {
 	}
 
 	@Override
-	protected void step() {
+	protected void loop() {
 		// TODO Auto-generated method stub
-
 	}
 
 }
