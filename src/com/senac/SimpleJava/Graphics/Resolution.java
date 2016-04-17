@@ -6,15 +6,13 @@ package com.senac.SimpleJava.Graphics;
  */
 public enum Resolution {
 	/** Define a 96 x 72 window. */
-	LOWRES(96,72, 8, 8),
-	/** Define a 256 x 192 window. */
-	MIDRES(256, 192, 3, 3),
-	/** Define a 758 x 576 window. */
-	HIGHRES(758, 576, 1, 1),
-	/** Define a 1024 x 768 window. */
-	SUPERRES(1024, 768, 0.75, 0.75),
+	LOWRES(96,72),
+	/** Define a 400 x 300 window. */
+	MIDRES(400, 300),
+	/** Define a 800 x 600 window. */
+	HIGHRES(800, 600),
 	/** Define a 256 x 192 window similar to MSX 1 computers. */
-	MSX(256, 192, 3, 3);
+	MSX(256, 192);
 	
 	/** The horizontal pixel scale to full resolution. */
 	public final double x;
@@ -25,9 +23,9 @@ public enum Resolution {
 	/** The height. */
 	public final int height;
 	
-	private Resolution(int width, int height, double x, double y) {
-		this.x = x;
-		this.y = y;
+	private Resolution(int width, int height) {
+		this.x = Canvas.SCREEN_WIDTH / (1.0*width);
+		this.y = Canvas.SCREEN_HEIGHT / (1.0*height);
 		this.width = width;
 		this.height = height;
 	}
