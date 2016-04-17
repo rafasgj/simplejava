@@ -50,13 +50,15 @@ public class Pong
 	}
 
 	@Override
-	public void step() {
+	public void loop() {
 		ball.step();
 		Point p = ball.getPosition();
 		if (checkColision(p,barB.getBounds()))
 			ball.invertY();
 		if (checkColision(p,barT.getBounds()))
 			ball.invertY();
+		
+		redraw();
 	}
 
 	private boolean checkColision(Point p, Rect bounds) {

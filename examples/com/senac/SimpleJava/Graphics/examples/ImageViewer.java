@@ -29,7 +29,7 @@ public class ImageViewer
 	}
 
 	@Override
-	protected void step() {
+	protected void loop() {
 	}
 
 }

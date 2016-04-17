@@ -30,7 +30,7 @@ public class MouseExample
 	}
 
 	@Override
-	protected void step() {
+	protected void loop() {
 		setResolution(Resolution.MSX);
 		setFramesPerSecond(120);
 	}

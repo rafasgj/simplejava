@@ -91,13 +91,15 @@ class GraphicApplication
 	
 	// Handle all mouse events
 	private MouseAdapter mouseAdapter;
+
+    private boolean needRedraw = true;
 	
 	/**
 	 * Initializes the underlying application engine, the drawing canvas,
 	 * and display the main window.
 	 */
 	protected GraphicApplication() {
-		sleepTime = 0;
+		sleepTime = 1000/30;
 		win = new JFrame("Simple Java");
 		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new Canvas(Resolution.LOWRES);
@@ -141,6 +143,13 @@ class GraphicApplication
 	}
 	
 	/**
+	 * Tell application to redraw its window.
+	 */
+	protected final void redraw() {
+		needRedraw = true;
+	}
+	
+	/**
 	 * This method is required to comply with the SimpleJava
 	 * application framework. It is the application entry point, and
 	 * define the application loop.
@@ -149,10 +158,12 @@ class GraphicApplication
 		try {
 			setup();
 			while (shouldRun()) {
-				long s = System.currentTimeMillis(), e;
-				step();
-				draw(canvas);
-				win.repaint();
+				long e, s = System.currentTimeMillis();
+				loop();
+				if (needRedraw) {
+					draw(canvas);
+					win.repaint();
+				}
 				e = System.currentTimeMillis();
 				sleepLoop(sleepTime - (e-s));
 			}
