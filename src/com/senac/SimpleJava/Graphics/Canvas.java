@@ -34,7 +34,7 @@ public class Canvas
 	private Color fg;
 	// The canvas background color.
 	private Color bg;
-
+	
 	// Required for JComponent serialization.
 	private static final long serialVersionUID = 4100468775042151138L;
 
@@ -180,10 +180,6 @@ public class Canvas
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g.create();
-		/*
-		java.awt.Image scale = img.getScaledInstance(WIDTH, HEIGHT,
-		                                    BufferedImage.SCALE_FAST);
-		 */
 		g2.drawImage(img, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, null);
 	}
 
@@ -241,8 +237,14 @@ public class Canvas
 		});
 	}
 	
-	public void putText(int x, int y, int size, String text)
-	{
+	/**
+	 * Draw a text in the specified position.
+	 * @param x The x coordinate.
+	 * @param y The y coordinate.
+	 * @param size The size of the text.
+	 * @param text The text to be drawn.
+	 */
+	public void putText(int x, int y, int size, String text) {
 		Graphics g = img.getGraphics();
 		g.setColor(getForeground());
 		g.setFont(new Font("Arial",0,size));
@@ -251,5 +253,5 @@ public class Canvas
 		g.drawString(text,
 				(int)(x-Math.round(b.getX())),
 				(int)(y-Math.round(b.getY())));
-	}
+	}	
 }
