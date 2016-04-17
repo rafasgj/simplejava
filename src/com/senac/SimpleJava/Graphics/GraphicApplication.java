@@ -1,8 +1,75 @@
 package com.senac.SimpleJava.Graphics;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JFrame;
 
 import com.senac.SimpleJava.EventDrivenApplication;
+import com.senac.SimpleJava.Graphics.events.MouseEvent;
+import com.senac.SimpleJava.Graphics.events.MouseObserver;
+
+/*
+ * This class handles all Java Swing mouse events, and route then to
+ * the correct observers.
+ */
+class MouseAdapter extends javax.swing.event.MouseInputAdapter
+{
+	private List<MouseObserver>[] observers;
+
+	private Resolution res;
+	
+	@SuppressWarnings("unchecked")
+	public MouseAdapter(Resolution res) {
+		this.res = res;
+		MouseEvent[] events = MouseEvent.values();
+		observers = new List[events.length];
+		for (int i = 0; i < events.length; i++)
+			observers[i] = new ArrayList<MouseObserver>();
+	}
+	
+	public void setResolution(Resolution res) {
+		this.res = res;
+	}
+	
+	private void notifyEvent(MouseEvent event, java.awt.event.MouseEvent e) {
+		int button = e.getButton();
+		Point p = new Point((int)(e.getX()/res.x), (int)(e.getY()/res.y));
+		for (MouseObserver o : observers[event.index])
+			o.notify(event, button, p);
+	}
+	
+	@Override
+	public void mouseClicked(java.awt.event.MouseEvent e) {
+		if (e.getClickCount() < 2)
+			notifyEvent(MouseEvent.CLICK, e);
+		else
+			notifyEvent(MouseEvent.DOUBLECLICK, e);
+	}
+	@Override
+	public void mouseDragged(java.awt.event.MouseEvent e) {
+		notifyEvent(MouseEvent.DRAG, e);
+	}
+	@Override
+	public void mouseMoved(java.awt.event.MouseEvent e) {
+		notifyEvent(MouseEvent.MOVE, e);
+	}
+	@Override
+	public void mousePressed(java.awt.event.MouseEvent e) {
+		notifyEvent(MouseEvent.PRESS, e);
+	}
+	@Override
+	public void mouseReleased(java.awt.event.MouseEvent e) {
+		notifyEvent(MouseEvent.RELEASE, e);
+	}
+	
+	public void register(MouseEvent event, MouseObserver observer) {
+		observers[event.index].add(observer);
+	}
+	public void unregister(MouseEvent event, MouseObserver observer) {
+		observers[event.index].remove(observer);
+	}
+}
 
 /**
  * This is the base class for all GraphicApplication (a.k.a. games) for
@@ -22,6 +89,9 @@ class GraphicApplication
 	private Canvas canvas;
 	private JFrame win;
 	
+	// Handle all mouse events
+	private MouseAdapter mouseAdapter;
+	
 	/**
 	 * Initializes the underlying application engine, the drawing canvas,
 	 * and display the main window.
@@ -31,6 +101,8 @@ class GraphicApplication
 		win = new JFrame("Simple Java");
 		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas = new Canvas(Resolution.LOWRES);
+		mouseAdapter = new MouseAdapter(canvas.getResolution());
+		canvas.addMouseListener(mouseAdapter);
 		win.add(canvas);
 		win.pack();
 		win.setVisible(true);
@@ -101,6 +173,7 @@ class GraphicApplication
 	 */
 	protected void setResolution(Resolution res) {
 		canvas.setResolution(res);
+		mouseAdapter.setResolution(res);
 	}
 
 	/**
@@ -125,6 +198,26 @@ class GraphicApplication
 		canvas.bindKey(key, action);
 	}
 	
+	/**
+	 * Bind a MouseObserver object to a mouse event. Remember to call
+	 * unregister() when the event don't need to be monitored anymore.
+	 * @param event The mouse event to observe.
+	 * @param observer The observer object.
+	 */
+	public void addMouseObserver(MouseEvent event, MouseObserver observer) {
+		mouseAdapter.register(event, observer);
+	}
+	
+	/**
+	 * Stop observing a mouse event. This method should be called when
+	 * the object will not be used anymore.
+	 * @param event The mouse event to observe.
+	 * @param observer The observer object.
+	 */
+	public void removeMouseObserver(MouseEvent event, MouseObserver observer) {
+		mouseAdapter.unregister(event, observer);
+	}
+
 	/**
 	 * This method is called just before the screen is redrawn, and
 	 * should be used to draw the application canvas.
