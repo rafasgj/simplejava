@@ -1,12 +1,28 @@
 package com.senac.SimpleJava;
 
+/**
+ * This is the base class for all Event Driven Applications for
+ * the SimpleJava framework.
+ * <p>
+ * All subclasses must implement methods setup() and loop() and
+ * should implement the method cleanup().
+ * <p>
+ * These applications run as an infinite loop, and the client will
+ * implement the parts required to execute the actual behavior through
+ * the hook methods.
+ * <p>
+ * The method setup() is called once before the loop starts. The
+ * method loop() is execute everytime the loop executes another
+ * iteration, and the method cleanup() after the loop finishes.
+ * To finish the loop an application must call endLoop();
+ */
 public abstract
 class EventDrivenApplication
 {
 	private boolean keepRunning;
 
 	/**
-	 * 
+	 * Initializes a new EventDrivenApplication object.
 	 */
 	protected EventDrivenApplication() {
 		keepRunning = true;
@@ -20,7 +36,7 @@ class EventDrivenApplication
 	public void run() {
 		try {
 			setup();
-			while (keepRunning) {
+			while (shouldRun()) {
 				loop();
 			}
 			cleanup();
