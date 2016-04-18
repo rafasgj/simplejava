@@ -75,7 +75,7 @@ class MouseAdapter extends javax.swing.event.MouseInputAdapter
 /**
  * This is the base class for all GraphicApplication (a.k.a. games) for
  * the SimpleJava framework.
- * All subclasses must implement methods setup(), step() and draw(), and
+ * All subclasses must implement methods setup(), loop() and draw(), and
  * should implement the method cleanup().
  * These applications run as an infinite loop, and the client will
  * implement the parts required to execute the actual behavior through
@@ -164,6 +164,7 @@ class GraphicApplication
 				if (needRedraw) {
 					draw(canvas);
 					win.repaint();
+					needRedraw = false;
 				}
 				e = System.currentTimeMillis();
 				sleepLoop(sleepTime - (e-s));

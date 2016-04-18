@@ -38,6 +38,7 @@ public class BouncingBall
 	public void loop() {
 		moveX();
 		moveY();
+		redraw();
 	}
 	
 	@Override

@@ -86,7 +86,7 @@ public class Invaders extends GraphicApplication {
 	@Override
 	protected void setup() {
 		// Application
-		Resolution res = Resolution.MIDRES;
+		Resolution res = Resolution.MSX;
 		setFramesPerSecond(60);
 		setResolution(res);
 		setTitle("Invaders");
@@ -145,7 +145,6 @@ public class Invaders extends GraphicApplication {
 			if (!hitEnemy())
 				moveShot();
 		}
-		
 		redraw();
 	}
 	

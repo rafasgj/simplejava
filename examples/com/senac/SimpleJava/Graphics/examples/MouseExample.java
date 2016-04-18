@@ -27,10 +27,6 @@ public class MouseExample
 	protected void setup() {
 		addMouseObserver(MouseEvent.CLICK, this);
 		addMouseObserver(MouseEvent.DOUBLECLICK, this);
-	}
-
-	@Override
-	protected void loop() {
 		setResolution(Resolution.MSX);
 		setFramesPerSecond(120);
 	}
@@ -43,6 +39,12 @@ public class MouseExample
 		if (event == MouseEvent.DOUBLECLICK) {
 			points.clear();
 		}
+		redraw();
+	}
+
+	@Override
+	protected void loop() {
+		/* nothing to do on the loop */
 	}
 
 }

@@ -24,7 +24,7 @@ public class Pong
 
 	@Override
 	public void setup() {
-		Resolution res = Resolution.MSX;
+		Resolution res = Resolution.LOWRES;
 		setResolution(res);
 		setFramesPerSecond(240);
 		setTitle("Pong");
