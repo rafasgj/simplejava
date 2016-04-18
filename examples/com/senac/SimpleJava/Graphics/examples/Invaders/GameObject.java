@@ -6,14 +6,14 @@ import com.senac.SimpleJava.Graphics.Canvas;
 import com.senac.SimpleJava.Graphics.Color;
 import com.senac.SimpleJava.Graphics.Drawable;
 import com.senac.SimpleJava.Graphics.Image;
-import com.senac.SimpleJava.Graphics.Moveable;
+import com.senac.SimpleJava.Graphics.Movable;
 import com.senac.SimpleJava.Graphics.Point;
 import com.senac.SimpleJava.Graphics.Rect;
 import com.senac.SimpleJava.Graphics.Sprite;
 
 public class GameObject
 	extends Sprite
-	implements Moveable, Drawable
+	implements Movable, Drawable
 {
 	private Rect limits;
 	private boolean hitXLimit = false;

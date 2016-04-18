@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
  * Implements the required behavior for an Image.
  */
 public class Image
-	implements Resizeable
+	implements Resizable
 {
 	/**
 	 * The image data is stored in a java.awt.image.BufferedImage.

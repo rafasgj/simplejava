@@ -3,8 +3,8 @@ package com.senac.SimpleJava.Graphics.examples;
 import com.senac.SimpleJava.Graphics.GraphicApplication;
 import com.senac.SimpleJava.Graphics.Canvas;
 import com.senac.SimpleJava.Graphics.Color;
-import com.senac.SimpleJava.Graphics.KeyboardAction;
 import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.events.KeyboardAction;
 
 public class BouncingBall
 	extends GraphicApplication

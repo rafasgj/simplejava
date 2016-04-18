@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import com.senac.SimpleJava.EventDrivenApplication;
+import com.senac.SimpleJava.Graphics.events.KeyboardAction;
 import com.senac.SimpleJava.Graphics.events.MouseEvent;
 import com.senac.SimpleJava.Graphics.events.MouseObserver;
 

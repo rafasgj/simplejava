@@ -15,6 +15,8 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
+import com.senac.SimpleJava.Graphics.events.KeyboardAction;
+
 /**
  * Implements a Canvas where objects are drawn to.
  */

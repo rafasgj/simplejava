@@ -7,10 +7,10 @@ import com.senac.SimpleJava.Graphics.Color;
 import com.senac.SimpleJava.Graphics.Drawable;
 import com.senac.SimpleJava.Graphics.GraphicApplication;
 import com.senac.SimpleJava.Graphics.Image;
-import com.senac.SimpleJava.Graphics.KeyboardAction;
 import com.senac.SimpleJava.Graphics.Point;
 import com.senac.SimpleJava.Graphics.Rect;
 import com.senac.SimpleJava.Graphics.Resolution;
+import com.senac.SimpleJava.Graphics.events.KeyboardAction;
 
 public class Invaders extends GraphicApplication {
 

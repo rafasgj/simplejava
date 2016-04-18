@@ -1,4 +1,4 @@
-package com.senac.SimpleJava.Graphics;
+package com.senac.SimpleJava.Graphics.events;
 
 /**
  * Interface to implement object that will respond to keyboard events.

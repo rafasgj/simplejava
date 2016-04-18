@@ -1,6 +1,7 @@
 package com.senac.SimpleJava.Graphics.examples.Pong;
 
 import com.senac.SimpleJava.Graphics.*;
+import com.senac.SimpleJava.Graphics.events.KeyboardAction;
 
 public class Pong
 		extends GraphicApplication

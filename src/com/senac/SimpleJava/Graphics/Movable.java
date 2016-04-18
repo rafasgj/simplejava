@@ -4,7 +4,7 @@ package com.senac.SimpleJava.Graphics;
  * This interface is implemented by all objects that can be moved on
  * the screen.
  */
-public interface Moveable {
+public interface Movable {
 	/**
 	 * Makes the object move on both horizontal or vertical directions
 	 * by an amount of pixels. It does accept sub-pixel and negative

@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Sprite
 	extends Image
-	implements Drawable, Moveable, Resizeable
+	implements Drawable, Movable, Resizable
 {
 	private double x,y;
 	
