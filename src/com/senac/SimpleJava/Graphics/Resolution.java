@@ -12,7 +12,9 @@ public enum Resolution {
 	/** Define a 800 x 600 window. */
 	HIGHRES(800, 600),
 	/** Define a 256 x 192 window similar to MSX 1 computers. */
-	MSX(256, 192);
+	MSX(256, 192),
+	/** Define a 320 x 200 window as was used on DOS games. */
+	MODE_X(320, 200);
 	
 	/** The horizontal pixel scale to full resolution. */
 	public final double x;
