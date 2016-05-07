@@ -18,9 +18,10 @@ public class BouncingBall
 
 	@Override
 	public void setup() {
-		setResolution(Resolution.MSX);
-		w = Resolution.MSX.width;
-		h = Resolution.MSX.height;
+		Resolution res = Resolution.MSX;
+		setResolution(res);
+		w = res.width;
+		h = res.height;
 		x = (int)(Math.random() * w);
 		y = (int)(Math.random() * h);
 		xdir = 1;
