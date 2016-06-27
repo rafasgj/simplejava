@@ -8,18 +8,21 @@ public class Pong
 {
 	private Ball ball;
 	private Bar barT, barB;
+
+	private int moveB = 0;
+	private int moveT = 0;
 	
 	private KeyboardAction moveBRight = new KeyboardAction() {
-		public void handleEvent() { barB.move(5, 0); }
+		public void handleEvent() { moveB = (moveB == 0) ? 1 : 0; }
 	};
 	private KeyboardAction moveBLeft = new KeyboardAction() {
-		public void handleEvent() { barB.move(-5, 0); }
+		public void handleEvent() { moveB = (moveB == 0) ? -1 : 0; }
 	};
 	private KeyboardAction moveTRight = new KeyboardAction() {
-		public void handleEvent() { barT.move(5, 0); }
+		public void handleEvent() { moveT = (moveT == 0) ? 1 : 0; }
 	};
 	private KeyboardAction moveTLeft = new KeyboardAction() {
-		public void handleEvent() { barT.move(-5, 0); }
+		public void handleEvent() { moveT = (moveT == 0) ? -1 : 0;  }
 	};
 
 	@Override
@@ -34,11 +37,12 @@ public class Pong
 		bindKey("O", moveTRight); // for Dvorak Keyboards.
 		bindKey("S", moveTRight); // for QWERTY Keyboards.
 		bindKey("A", moveTLeft);
+		bindKey("Q", moveTLeft); // for AZERTY Keyboards.
 
 		ball = new Ball(res.width, res.height);
-		barB = new Bar();
+		barB = new Bar(res.width);
 		barB.move(res.width / 2, res.height - 5);
-		barT = new Bar();
+		barT = new Bar(res.width);
 		barT.move(res.width / 2, 2);
 	}
 	
@@ -52,6 +56,9 @@ public class Pong
 
 	@Override
 	public void loop() {
+		barB.move(1 * moveB, 0); 
+		barT.move(1 * moveT, 0); 
+		
 		ball.step();
 		Point p = ball.getPosition();
 		if (checkColision(p,barB.getBounds()))

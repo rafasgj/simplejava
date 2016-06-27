@@ -219,18 +219,57 @@ public class Canvas
 	/**
 	 * Bind a key to a KeyboardAction. The Key is a string representing
 	 * the keyboard key to connect the action, for example, "SPACE". The
-	 * action is a KeyboardAction object that will be executed when the
-	 * key is pressed. 
+	 * action is a KeyboardAction object that will be executed either if
+	 * the key is pressed or released. 
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
 	 */
 	public void bindKey(String key, final KeyboardAction action) {
+		bindKeyPressed(key, action);
+		bindKeyReleased(key, action);
+	}
+
+	/**
+	 * Bind a key to a KeyboardAction that is invoked if the key is
+	 * pressed. The Key is a string representing the keyboard key to
+	 * connect the action, for example, "SPACE". The action is a
+	 * KeyboardAction object that will be executed either if the key is
+	 * pressed.
+	 * @param key The key to bind the action to.
+	 * @param action The KeyboardAction object that will respond to the
+	 * 				event.
+	 */
+	public void bindKeyPressed(String key, final KeyboardAction action) {
 		InputMap im = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
 		ActionMap am = getActionMap();
-		KeyStroke ks = KeyStroke.getKeyStroke(key);
-		im.put(ks, key);
-		am.put(key, new AbstractAction() {
+		KeyStroke ks = KeyStroke.getKeyStroke("pressed "  + key);
+		im.put(ks, "pressed"+key);
+		am.put("pressed"+key, new AbstractAction() {
+			private static final long serialVersionUID = 1L;
+			private final KeyboardAction handler = action;
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{ handler.handleEvent(); }
+		});
+	}
+	
+	/**
+	 * Bind a key to a KeyboardAction that is invoked if the key is
+	 * released. The Key is a string representing the keyboard key to
+	 * connect the action, for example, "SPACE". The action is a
+	 * KeyboardAction object that will be executed either if the key is
+	 * released.
+	 * @param key The key to bind the action to.
+	 * @param action The KeyboardAction object that will respond to the
+	 * 				event.
+	 */
+	public void bindKeyReleased(String key, final KeyboardAction action) {
+		InputMap im = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		ActionMap am = getActionMap();
+		KeyStroke ks = KeyStroke.getKeyStroke("released " + key );
+		im.put(ks, "released"+key);
+		am.put("released"+key, new AbstractAction() {
 			private static final long serialVersionUID = 1L;
 			private final KeyboardAction handler = action;
 			@Override
