@@ -11,8 +11,10 @@ public class Bar
 	implements Drawable
 {
 	private Sprite sprite;
+	private int xres;
 	
-	public Bar() {
+	public Bar(int xres) {
+		this.xres = xres;
 		sprite = new Sprite(8,3, Color.WHITE);
 		for (int x = 1; x < 7; ++x) {
 			sprite.setPixel(x, 0, Color.BLACK);
@@ -26,7 +28,8 @@ public class Bar
 		Point xy = sprite.getPosition();
 		int x = (int)xy.x + dx;
 		int y = (int)xy.y + dy;
-		sprite.setPosition(x,y);
+		if (x > 0 && x < xres)
+			sprite.setPosition(x,y);
 	}
 	
 	public void draw(Canvas canvas) {
