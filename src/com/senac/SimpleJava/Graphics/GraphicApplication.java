@@ -201,7 +201,7 @@ class GraphicApplication
 	 * Bind a key to a KeyboardAction. The Key is a string representing
 	 * the keyboard key to connect the action, for example, "SPACE". The
 	 * action is a KeyboardAction object that will be executed when the
-	 * key is pressed.
+	 * key is pressed or released.
 	 * The actual binding is done by the Application Canvas.
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
@@ -209,6 +209,32 @@ class GraphicApplication
 	 */
 	public void bindKey(String key, KeyboardAction action) {
 		canvas.bindKey(key, action);
+	}
+	/**
+	 * Bind a key to a KeyboardAction when the key is pressed. The Key
+	 * is a string representing the keyboard key to connect the action,
+	 * for example, "SPACE". The action is a KeyboardAction object that
+	 * will be executed when the key is pressed.
+	 * The actual binding is done by the Application Canvas.
+	 * @param key The key to bind the action to.
+	 * @param action The KeyboardAction object that will respond to the
+	 * 				event.
+	 */
+	public void bindKeyPressed(String key, KeyboardAction action) {
+		canvas.bindKeyPressed(key, action);
+	}
+	/**
+	 * Bind a key to a KeyboardAction when the key is released. The Key
+	 * is a string representing the keyboard key to connect the action,
+	 * for example, "SPACE". The action is a KeyboardAction object that
+	 * will be executed when the key is released.
+	 * The actual binding is done by the Application Canvas.
+	 * @param key The key to bind the action to.
+	 * @param action The KeyboardAction object that will respond to the
+	 * 				event.
+	 */
+	public void bindKeyReleased(String key, KeyboardAction action) {
+		canvas.bindKeyReleased(key, action);
 	}
 	
 	/**

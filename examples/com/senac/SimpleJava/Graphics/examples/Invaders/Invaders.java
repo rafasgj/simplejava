@@ -42,15 +42,26 @@ public class Invaders extends GraphicApplication {
 				public void handleEvent()
 				{ if (shot == null) newShot(); }
 			});
-			bindKey("RIGHT", new KeyboardAction() {
+			bindKeyPressed("RIGHT", new KeyboardAction() {
 				@Override
-				public void handleEvent()
-				{ spaceship.move(xherodelta, 0); }
+				public void handleEvent() {
+					xherodelta = +3;
+				}
 			});
-			bindKey("LEFT", new KeyboardAction() {
+			bindKeyReleased("RIGHT", new KeyboardAction() {
 				@Override
 				public void handleEvent()
-				{ spaceship.move(-xherodelta, 0); }
+				{ xherodelta = 0; }
+			});
+			bindKeyPressed("LEFT", new KeyboardAction() {
+				@Override
+				public void handleEvent()
+				{ xherodelta = -3; }
+			});
+			bindKeyReleased("LEFT", new KeyboardAction() {
+				@Override
+				public void handleEvent()
+				{ xherodelta = 0; }
 			});
 		}
 	}
@@ -92,7 +103,7 @@ public class Invaders extends GraphicApplication {
 		setTitle("Invaders");
 		
 		// Control variables.
-		xherodelta = 3;
+		if (DEMO_MODE) xherodelta = 3;
 		xenemydelta = 1;
 		score = 0;
 		
@@ -164,10 +175,11 @@ public class Invaders extends GraphicApplication {
 
 	private void moveHero() {
 		if (DEMO_MODE) {
-			spaceship.move(xherodelta, 0);
 			if (spaceship.hitHorizontal())
 				xherodelta *= -1;
 		}
+		if (xherodelta != 0)
+			spaceship.move(xherodelta, 0);
 	}
 	
 	private void moveEnemies() {
