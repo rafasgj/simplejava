@@ -127,28 +127,43 @@ public class Canvas
 	 */
 	public synchronized
 	void drawLine(int x0, int y0, int x1, int y1) {
-		if (x0 > x1) {
-			int t = x1;
-			x1 = x0;
-			x0 = t;
-		}
-		if (y0 > y1) {
-			int t = y1;
-			y1 = y0;
-			y0 = t;
-		}
-		int dx =  x1 - x0;
-		int dy =  y1 - y0;
-		int y = y0;
-		int e = 0;
-		for (int x = x0; x <= x1; x++) {
-			putPixel(x, y);
-			e += dy;
-			if ( 2*e >= dx) {
-				y++;
-				e -= dx;
-			}
-		}
+
+		int d = 0;
+		 
+        int dy = Math.abs(y1 - y0);
+        int dx = Math.abs(x1 - x0);
+ 
+        int dy2 = (dy << 1); 
+        int dx2 = (dx << 1);
+ 
+        int sx = x0 < x1 ? 1 : -1; // increment direction
+        int sy = y0 < y1 ? 1 : -1;
+ 
+        if (dy <= dx) {
+            for (;;) {
+                putPixel(x0,y0);
+                if (x0 == x1)
+                    break;
+                x0 += sx;
+                d += dy2;
+                if (d > dx) {
+                    y0 += sy;
+                    d -= dx2;
+                }
+            }
+        } else {
+            for (;;) {
+                putPixel(x0, y0);
+                if (y0 == y1)
+                    break;
+                y0 += sy;
+                d += dx2;
+                if (d > dy) {
+                    x0 += sx;
+                    d -= dy2;
+                }
+            }
+        }
 	}
 	
 	/**
@@ -288,7 +303,7 @@ public class Canvas
 	public void putText(int x, int y, int size, String text) {
 		Graphics g = img.getGraphics();
 		g.setColor(getForeground());
-		g.setFont(new Font("Arial",0,size));
+		g.setFont(new Font("Sans",0,size));
 		FontMetrics fm = g.getFontMetrics();
 		Rectangle2D b = fm.getStringBounds(text, g);
 		g.drawString(text,
