@@ -83,6 +83,7 @@ public class Image
 	 * @param width The new width of the image.
 	 * @param height The new height of the image.
 	 */
+	@Override
 	public void resize(int width, int height) {
 		BufferedImage i;
 		i= new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
