@@ -16,6 +16,8 @@ public class DrawLines extends GraphicApplication {
 		canvas.drawLine(0,0,res.width-1,0);
 		canvas.setForeground(Color.BLUE);
 		canvas.drawLine(res.width-1,res.height-1,0,50);
+		canvas.setForeground(Color.MAGENTA);
+		canvas.drawLine(res.width/2,res.height,res.width/2,0);
 	}
 
 	@Override
