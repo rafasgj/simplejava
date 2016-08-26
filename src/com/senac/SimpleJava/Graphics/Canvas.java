@@ -219,7 +219,7 @@ public class Canvas
 	 */
 	public void setBackground(Color bg) {
 		this.bg = bg;
-		setBackground(bg.asAWTColor());
+		super.setBackground(bg.asAWTColor());
 	}
 	
 	/**
@@ -228,9 +228,17 @@ public class Canvas
 	 */
 	public void setForeground(Color fg) {
 		this.fg = fg;
-		setForeground(fg.asAWTColor());
 	}
 
+	/**
+	 * Get the foreground color.
+	 * @return The component foreground color.
+	 */
+	@Override
+	public java.awt.Color getForeground() {
+		return fg.asAWTColor();
+	}
+	
 	/**
 	 * Bind a key to a KeyboardAction. The Key is a string representing
 	 * the keyboard key to connect the action, for example, "SPACE". The
@@ -302,7 +310,7 @@ public class Canvas
 	 */
 	public void putText(int x, int y, int size, String text) {
 		Graphics g = img.getGraphics();
-		g.setColor(getForeground());
+		g.setColor(fg.asAWTColor());
 		g.setFont(new Font("Sans",0,size));
 		FontMetrics fm = g.getFontMetrics();
 		Rectangle2D b = fm.getStringBounds(text, g);
