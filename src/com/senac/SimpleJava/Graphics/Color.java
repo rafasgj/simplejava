@@ -87,12 +87,20 @@ public class Color {
 	public static final Color LIGHTGRAY = new Color(192);
 	/** Create a Color object representing Red. */
 	public static final Color RED = new Color(255,0,0);
+	/** Create a Color object representing Dark Red. */
+	public static final Color DARKRED = new Color(128,0,0);
 	/** Create a Color object representing Gren. */
 	public static final Color GREEN = new Color(0,255,0);
+	/** Create a Color object representing Dark Green. */
+	public static final Color DARKGREEN = new Color(0,128,0);
 	/** Create a Color object representing Blue. */
 	public static final Color BLUE = new Color(0,0,255);
+	/** Create a Color object representing Navy. */
+	public static final Color NAVY = new Color(0,0,128);
 	/** Create a Color object representing Yellow. */
 	public static final Color YELLOW = new Color(255,255,0);
+	/** Create a Color object representing Orange. */
+	public static final Color ORANGE = new Color(255,128,0);
 	/** Create a Color object representing Cyan. */
 	public static final Color CYAN = new Color(0,255,255);
 	/** Create a Color object representing Magenta. */
