@@ -127,43 +127,8 @@ public class Canvas
 	 */
 	public synchronized
 	void drawLine(int x0, int y0, int x1, int y1) {
-
-		int d = 0;
-		 
-        int dy = Math.abs(y1 - y0);
-        int dx = Math.abs(x1 - x0);
- 
-        int dy2 = (dy << 1); 
-        int dx2 = (dx << 1);
- 
-        int sx = x0 < x1 ? 1 : -1; // increment direction
-        int sy = y0 < y1 ? 1 : -1;
- 
-        if (dy <= dx) {
-            for (;;) {
-                putPixel(x0,y0);
-                if (x0 == x1)
-                    break;
-                x0 += sx;
-                d += dy2;
-                if (d > dx) {
-                    y0 += sy;
-                    d -= dx2;
-                }
-            }
-        } else {
-            for (;;) {
-                putPixel(x0, y0);
-                if (y0 == y1)
-                    break;
-                y0 += sy;
-                d += dx2;
-                if (d > dy) {
-                    x0 += sx;
-                    d -= dy2;
-                }
-            }
-        }
+		Util.bresenham(x0,y0,x1,y1,
+			           (a,b) -> this.putPixel((int)a,(int)b));
 	}
 	
 	/**

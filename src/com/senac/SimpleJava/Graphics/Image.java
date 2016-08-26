@@ -99,11 +99,35 @@ public class Image
 		img = i;
 	}	
 	
+	/**
+	 * Query the width of the image.
+	 * @return The image width.
+	 */
 	public int getWidth() {
 		return img.getWidth();
 	}
 	
+	/**
+	 * Query the height of the image.
+	 * @return The image height.
+	 */
 	public int getHeight() {
 		return img.getHeight();
 	}
+	
+	/**
+	 * Draw a line between two points using the provided drawing
+	 * color, with the Bresenhan's algorithm.
+	 * @param x0 The x coordinate of the first point.
+	 * @param y0 The y coordinate of the first point.
+	 * @param x1 The x coordinate of the second point.
+	 * @param y1 The y coordinate of the second point.
+	 * @param color The color to use to draw the line.
+	 */
+	public synchronized
+	void drawLine(int x0, int y0, int x1, int y1, Color color) {
+		Util.bresenham(x0,y0,x1,y1,
+				       (a,b) -> this.setPixel((int)a,(int)b,color));
+	}
+
 }
