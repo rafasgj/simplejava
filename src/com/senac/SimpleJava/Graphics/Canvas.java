@@ -217,6 +217,14 @@ public class Canvas
 		bindKeyPressed(key, action);
 		bindKeyReleased(key, action);
 	}
+	/**
+	 * Remove event handler associated with a given key.
+	 * @param key The key to remove the event handler.
+	 */
+	public void unbindKey(String key) {
+		unbindKeyPressed(key);
+		unbindKeyReleased(key);
+	}
 
 	/**
 	 * Bind a key to a KeyboardAction that is invoked if the key is
@@ -241,7 +249,20 @@ public class Canvas
 			{ handler.handleEvent(); }
 		});
 	}
-	
+
+	/**
+	 * Remove event handler associated with a given key, for when it is
+	 * pressed.
+	 * @param key The key to remove the event handler.
+	 */
+	public void unbindKeyPressed(String key) {
+		InputMap im = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		ActionMap am = getActionMap();
+		KeyStroke ks = KeyStroke.getKeyStroke("pressed " + key );
+		im.remove(ks);
+		am.remove("pressed"+key);
+	}
+
 	/**
 	 * Bind a key to a KeyboardAction that is invoked if the key is
 	 * released. The Key is a string representing the keyboard key to
@@ -265,7 +286,20 @@ public class Canvas
 			{ handler.handleEvent(); }
 		});
 	}
-	
+
+	/**
+	 * Remove event handler associated with a given key, for when it is
+	 * released.
+	 * @param key The key to remove the event handler.
+	 */
+	public void unbindKeyReleased(String key) {
+		InputMap im = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+		ActionMap am = getActionMap();
+		KeyStroke ks = KeyStroke.getKeyStroke("released " + key );
+		im.remove(ks);
+		am.remove("released"+key);
+	}
+		
 	/**
 	 * Draw a text in the specified position.
 	 * @param x The x coordinate.

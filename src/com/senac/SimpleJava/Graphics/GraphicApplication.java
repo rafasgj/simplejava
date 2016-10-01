@@ -211,6 +211,13 @@ class GraphicApplication
 		canvas.bindKey(key, action);
 	}
 	/**
+	 * Remove event handlers associated with a given key.
+	 * @param key The key to remove the event handler.
+	 */
+	public void unbindKey(String key) {
+		canvas.unbindKey(key);
+	}	
+	/**
 	 * Bind a key to a KeyboardAction when the key is pressed. The Key
 	 * is a string representing the keyboard key to connect the action,
 	 * for example, "SPACE". The action is a KeyboardAction object that
@@ -224,6 +231,14 @@ class GraphicApplication
 		canvas.bindKeyPressed(key, action);
 	}
 	/**
+	 * Remove event handler associated with a given key, for when it is
+	 * pressed.
+	 * @param key The key to remove the event handler.
+	 */
+	public void unbindKeyPressed(String key) {
+		canvas.unbindKeyPressed(key);
+	}	
+	/**
 	 * Bind a key to a KeyboardAction when the key is released. The Key
 	 * is a string representing the keyboard key to connect the action,
 	 * for example, "SPACE". The action is a KeyboardAction object that
@@ -235,6 +250,14 @@ class GraphicApplication
 	 */
 	public void bindKeyReleased(String key, KeyboardAction action) {
 		canvas.bindKeyReleased(key, action);
+	}
+	/**
+	 * Remove event handler associated with a given key, for when it is
+	 * released.
+	 * @param key The key to remove the event handler.
+	 */
+	public void unbindKeyReleased(String key) {
+		canvas.unbindKeyReleased(key);
 	}
 	
 	/**
