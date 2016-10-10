@@ -9,6 +9,10 @@ import javax.sound.sampled.LineEvent.Type;
 
 import com.senac.SimpleJava.Action;
 
+/**
+ * This class adds support for playing sounds in the background,
+ * or playing a sound and waiting for it to finhish playing.
+ */
 public class AudioClip {
 
 	private static class AudioListener implements LineListener {
@@ -43,10 +47,27 @@ public class AudioClip {
 		}
 	}
 
+	/**
+	 * Plays a sound clip and waits for it to finish.
+	 * @param filename The path to the filename to be played.
+	 * @throws AudioException An AudioExption in thrown if the file
+	 * can't be found, opened, or if an error in the sound subsystem
+	 * occurs.
+	 */
 	public static void playSound(String filename) throws AudioException {
 		playSound(filename, null);
 	}
 
+	/**
+	 * Plays a sound clip in the background and execute the action
+	 * provided when the sound finishes execution. If the action
+	 * objectis 'null', then the method blocks and only returns
+	 * after the sound clip finishes.
+	 * @param filename The path to the filename to be played.
+	 * @throws AudioException An AudioExption in thrown if the file
+	 * can't be found, opened, or if an error in the sound subsystem
+	 * occurs.
+	 */
 	public static void playSound(String filename, Action whenFinished) throws AudioException {
 		AudioInputStream audioInputStream;
 		AudioListener listener;
