@@ -43,7 +43,6 @@ class EventDrivenApplication
 		} catch(Exception e) {
 			System.err.println("Unhandled Exception forced termination.");
 			e.printStackTrace(System.err);
-			System.exit(-1);
 		}
 	}
 

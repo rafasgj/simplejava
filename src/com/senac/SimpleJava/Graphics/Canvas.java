@@ -57,7 +57,8 @@ public class Canvas
 	 * Retrieves the current client resolution configuration.
 	 * @return The currnet resolution.
 	 */
-	public Resolution getResolution() {
+	public synchronized
+	Resolution getResolution() {
 		return res;
 	}
 	

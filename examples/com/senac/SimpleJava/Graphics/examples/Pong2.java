@@ -26,8 +26,8 @@ public class Pong2 extends GraphicApplication {
 			
 			int mid = res.width / 2;
 			canvas.drawLine(mid, 0, mid, res.height);
-			canvas.putText(18, 1, 12, ((Integer)score1).toString());
-			canvas.putText(70, 1, 12, ((Integer)score2).toString());
+			canvas.putText(18, 1, 12, String.format("%d",score1));
+			canvas.putText(70, 1, 12, String.format("%d",score2));
 			
 			paddle1.draw(canvas);
 			paddle2.draw(canvas);

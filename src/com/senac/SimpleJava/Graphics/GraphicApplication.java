@@ -176,7 +176,6 @@ class GraphicApplication
 			if (win != null)
 				win.dispose();
 			e.printStackTrace(System.err);
-			System.exit(-1);
 		}
 	}
 	
