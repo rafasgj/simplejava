@@ -34,7 +34,7 @@ final class Program {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+			e.getTargetException().printStackTrace();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		}
