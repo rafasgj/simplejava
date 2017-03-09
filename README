@@ -1,13 +1,66 @@
 Simple Java
 ===========
 
-This project is a small framework to aid in teaching object oriented 
-programming using the Java programming language.
+The main goal of this project is to develop a programming framework to
+aid teaching object oriented programming using the Java Programming
+Language.
 
-The main objective is to reduce the number of concepts that need to 
-be understood in order to write Java programs. For example, one need 
-not need to know what a 'static method' is since there's no need to 
-write a 'main()' method for the program to work.
+By using this framework, the number of concepts needed to be presented
+to the student is reduced, and he can focus on the usage and design of
+objects. For example, one need not need to know what a 'static' or
+'class' method is, or what are arguments, or what is an array, since
+there's no need to  write a 'main()' method for the program to work.
+The program entry point is an instance method, with no parameters,
+which is much easier to explain to a beginner programmer.
 
-This is in an early stages of development, and sugestions, bug fixes, 
-and critique is very much appreciated.
+For command line programs, the framework provide simpler behavior, by
+no using the standard Java streams, but providing a Console class that
+has the apropriate methods for reading data (String, integers and float
+point) from the standard input stream, and methods for printing on the
+standard output stream.
+
+Also, there is provision for event based and graphic applications, that
+work similar to the [Arduino] board, where the student needs to
+implement the _setup_ and _loop_ methods.
+
+This project is in its early stages of development, and is being used
+with undergraduate students on their second programming class to review
+programming logic and teach object oriented concepts.
+
+To use the framework, you'll need a Java Virtual Machine compatible
+with Java 8.
+
+The class documentation can be generated from the source code using the
+javadoc tool, and if you have it installed the shell script found at
+**scripts/generate_docs.sh** can be used to create the files under the
+**doc** directory. Open the index.html file on that directory to access
+the documentation. These documents can also be found online at
+[http://extra/simplejava/index.html].
+
+## Obtaing SimpleJava
+
+- Downloading the sources.
+- Downloading the binaries.
+
+## Using SimpleJava from the command line
+- gerando o JAR
+- compilando um programa
+```
+javac -classpath .:./simplejava.jar Hello.java
+```
+- executando
+```
+java -classpath .:./simplejava.jar com.senac.SimpleJava.Program Hello
+```
+
+## Using SimpleJava with Eclipse
+- gerando o JAR a partir dos fontes
+- criando um novo projeto de aplicação console
+- configurando o projeto para compilar
+- configurando o projeto para executar
+
+<!-- Links: -->
+[Algoritmos e Programação II]:http://rafaeljeffman.com/_.php?c=algoritmos2
+[repositório SimpleJava]:http://github.com/rafasgj/simplejava.git
+[github]:http://github.com
+[arduino]:http://arduino.cc

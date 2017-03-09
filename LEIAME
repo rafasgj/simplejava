@@ -1,0 +1,52 @@
+Simple Java
+===========
+
+O objetivo deste projeto é desenvolver um _framework_ para auxiliar
+no ensino de programação orientada a objetos utilizando a linguagem
+de programação Java.
+
+A utilização do _framework_ permite reduzir o número de conceitos que
+devem ser apresentados a um estudante que está iniciando seus estudos
+de programação ao escrever seus primeiros programas. Por exemplo,
+não é necessário que o aluno saiba o que é um **método de classe**, ou
+parâmetros, ou arrays, para escrever o método **main()**, uma vez que
+o ponto de entrada do sistema é um método de instância, sem parâmetros.
+
+O _framework_ também facilita a leitura de dados a partir do teclado
+em aplicações em modo texto, e provê uma estrutura simples para o
+desenvolvimento de aplicações baseadas em eventos e _loops_, como
+jogos simples.
+
+Este projeto está em fase inicial de desenvolvimento, e está sendo
+utilizado na disciplina de [Algoritmos e Programação II] da
+[Faculdade Senac Porto Alegre].
+
+O código fonte pode ser obtido no [repositório SimpleJava],
+disponível no [Github].
+
+Para a utilização do _framework_, é necessária a versão 8 da JVM, sendo
+recomendada a utilização da versão mais recente.
+
+A documentação do _framework_ pode ser gerada a partir dos fontes com o
+javadoc. Se você tem o javadoc instalado pode executar, a partir da
+raiz do projeto, o comando ```scripts/generate_docs.sh```. Esta
+documentação também está disponível na web em
+[http://extra/simplejava/index.html].
+
+## Utilização do SimpleJava com o Eclipse
+
+## Utilização do SimpleJava em linha de comando
+- gerando o JAR
+- compilando um programa
+```
+javac -classpath .:./simplejava.jar Hello.java
+```
+- executando
+```
+java -classpath .:./simplejava.jar com.senac.SimpleJava.Program Hello
+```
+
+<!-- Links: -->
+[Algoritmos e Programação II]:http://rafaeljeffman.com/_.php?c=algoritmos2
+[repositório SimpleJava]:http://github.com/rafasgj/simplejava.git
+[github]:http://github.com
