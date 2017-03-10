@@ -7,8 +7,6 @@ import com.senac.SimpleJava.Audio.AudioException;
 public class AudioTest {
 	private boolean running = true;
 	public void run() throws AudioException {
-		Object o = null;
-		o.equals("Hello");
 		Console.println("Playing sound in the background.");
 		try {
 			AudioClip.playSound("audio/level-start.wav", () -> running = false );
