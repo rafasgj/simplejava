@@ -1,5 +1,7 @@
 package com.senac.SimpleJava.Graphics;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import javax.swing.JFrame;
 
 import com.senac.SimpleJava.EventDrivenApplication;
 import com.senac.SimpleJava.Graphics.events.KeyboardAction;
+import com.senac.SimpleJava.Graphics.events.KeyboardTypingEvent;
 import com.senac.SimpleJava.Graphics.events.MouseEvent;
 import com.senac.SimpleJava.Graphics.events.MouseObserver;
 
@@ -113,6 +116,7 @@ class GraphicApplication
 	
 	/**
 	 * Set the window title.
+	 * 
 	 * @param title The new window title.
 	 */
 	protected void setTitle(String title) {
@@ -123,6 +127,7 @@ class GraphicApplication
 	 * Set the maximum number of frames per second that the application
 	 * will have. This will force the frequency of hook methods to be
 	 * controlled.
+	 * 
 	 * @param fps The maximum number of frames per second (0 to disable).
 	 */
 	protected void setFramesPerSecond(int fps) {
@@ -181,6 +186,7 @@ class GraphicApplication
 	
 	/**
 	 * Set the application screen resolution.
+	 * 
 	 * @param res The new screen resolution.
 	 */
 	protected void setResolution(Resolution res) {
@@ -190,6 +196,7 @@ class GraphicApplication
 
 	/**
 	 * Retrieves the current screen resolution.
+	 * 
 	 * @return The current screen resolution.
 	 */
 	protected Resolution getResolution() {
@@ -201,7 +208,8 @@ class GraphicApplication
 	 * the keyboard key to connect the action, for example, "SPACE". The
 	 * action is a KeyboardAction object that will be executed when the
 	 * key is pressed or released.
-	 * The actual binding is done by the Application Canvas.
+	 * <p>The actual binding is done by the Application Canvas.
+	 * 
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
@@ -211,6 +219,7 @@ class GraphicApplication
 	}
 	/**
 	 * Remove event handlers associated with a given key.
+	 * 
 	 * @param key The key to remove the event handler.
 	 */
 	public void unbindKey(String key) {
@@ -221,7 +230,8 @@ class GraphicApplication
 	 * is a string representing the keyboard key to connect the action,
 	 * for example, "SPACE". The action is a KeyboardAction object that
 	 * will be executed when the key is pressed.
-	 * The actual binding is done by the Application Canvas.
+	 * <p>The actual binding is done by the Application Canvas.
+	 * 
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
@@ -232,6 +242,7 @@ class GraphicApplication
 	/**
 	 * Remove event handler associated with a given key, for when it is
 	 * pressed.
+	 * 
 	 * @param key The key to remove the event handler.
 	 */
 	public void unbindKeyPressed(String key) {
@@ -242,7 +253,8 @@ class GraphicApplication
 	 * is a string representing the keyboard key to connect the action,
 	 * for example, "SPACE". The action is a KeyboardAction object that
 	 * will be executed when the key is released.
-	 * The actual binding is done by the Application Canvas.
+	 * <p>The actual binding is done by the Application Canvas.
+	 * 
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
@@ -258,10 +270,31 @@ class GraphicApplication
 	public void unbindKeyReleased(String key) {
 		canvas.unbindKeyReleased(key);
 	}
+
+	/**
+	 * Add a listener object that will receive a KeyboardTypingEvent
+	 * every time a key is typed on the keyboard.
+	 * 
+	 * @param handler The KeyboardTypingEvent object that will handle
+	 * the event.
+	 */
+	public void addKeyTypedListener(final KeyboardTypingEvent handler) {
+		win.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				handler.keyTyped(e.getKeyChar());
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {/*ignore it.*/}
+			@Override
+			public void keyPressed(KeyEvent e) {/*ignore it.*/}
+		});
+	}
 	
 	/**
 	 * Bind a MouseObserver object to a mouse event. Remember to call
 	 * unregister() when the event don't need to be monitored anymore.
+	 * 
 	 * @param event The mouse event to observe.
 	 * @param observer The observer object.
 	 */
@@ -272,6 +305,7 @@ class GraphicApplication
 	/**
 	 * Stop observing a mouse event. This method should be called when
 	 * the object will not be used anymore.
+	 * 
 	 * @param event The mouse event to observe.
 	 * @param observer The observer object.
 	 */
@@ -282,6 +316,7 @@ class GraphicApplication
 	/**
 	 * This method is called just before the screen is redrawn, and
 	 * should be used to draw the application canvas.
+	 * 
 	 * @param canvas The canvas used to draw elements.
 	 */
 	protected abstract void draw(Canvas canvas);

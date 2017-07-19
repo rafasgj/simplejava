@@ -6,6 +6,8 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
@@ -16,6 +18,7 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
 import com.senac.SimpleJava.Graphics.events.KeyboardAction;
+import com.senac.SimpleJava.Graphics.events.KeyboardTypingEvent;
 
 /**
  * Implements a Canvas where objects are drawn to.
@@ -42,6 +45,7 @@ public class Canvas
 
 	/**
 	 * Initializes a new Canvas given a resolution configuration.
+	 * 
 	 * @param res The client screen configuration.
 	 */
 	public Canvas(Resolution res) {
@@ -55,6 +59,7 @@ public class Canvas
 	
 	/**
 	 * Retrieves the current client resolution configuration.
+	 * 
 	 * @return The currnet resolution.
 	 */
 	public synchronized
@@ -74,6 +79,7 @@ public class Canvas
 
 	/**
 	 * Draw a pixel on the screen, with a given color and position.
+	 * 
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
 	 * @param color The color of the pixel.
@@ -89,6 +95,7 @@ public class Canvas
 	/**
 	 * Draw a pixel on the screen with the current foreground
 	 * color, in a given position.
+	 * 
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
 	 */
@@ -100,6 +107,7 @@ public class Canvas
 	/**
 	 * Draw a pixel on the screen with the current foreground
 	 * color in the given position.
+	 * 
 	 * @param point The position (x,y) to draw the pixel.
 	 */
 	public synchronized
@@ -110,6 +118,7 @@ public class Canvas
 	/**
 	 * Draw a line between two points using the current drawing
 	 * color.
+	 * 
 	 * @param p0 The first point.
 	 * @param p1 The second point.
 	 */
@@ -121,6 +130,7 @@ public class Canvas
 	/**
 	 * Draw a line between two points using the current drawing
 	 * color, with the Bresenhan's algorithm.
+	 * 
 	 * @param x0 The x coordinate of the first point.
 	 * @param y0 The y coordinate of the first point.
 	 * @param x1 The x coordinate of the second point.
@@ -134,6 +144,7 @@ public class Canvas
 	
 	/**
 	 * Draw an image in a given position.
+	 * 
 	 * @param image The image to draw.
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
@@ -145,6 +156,7 @@ public class Canvas
 
 	/**
 	 * Draw a java.awt.Image in a given position.
+	 * 
 	 * @param image The image to draw.
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
@@ -169,6 +181,7 @@ public class Canvas
 	/**
 	 * Changes the canvas client resolution. The canvas will be cleared
 	 * after the resolution configuration is changed.
+	 * 
 	 * @param res The new resolution.
 	 */
 	public synchronized
@@ -181,6 +194,7 @@ public class Canvas
 
 	/**
 	 * Set the Canvas background color.
+	 * 
 	 * @param bg The new background color.
 	 */
 	public void setBackground(Color bg) {
@@ -190,6 +204,7 @@ public class Canvas
 	
 	/**
 	 * Set the Canvas foreground color.
+	 * 
 	 * @param fg The new foreground color.
 	 */
 	public void setForeground(Color fg) {
@@ -198,6 +213,7 @@ public class Canvas
 
 	/**
 	 * Get the foreground color.
+	 * 
 	 * @return The component foreground color.
 	 */
 	@Override
@@ -210,6 +226,7 @@ public class Canvas
 	 * the keyboard key to connect the action, for example, "SPACE". The
 	 * action is a KeyboardAction object that will be executed either if
 	 * the key is pressed or released. 
+	 * 
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
@@ -220,6 +237,7 @@ public class Canvas
 	}
 	/**
 	 * Remove event handler associated with a given key.
+	 * 
 	 * @param key The key to remove the event handler.
 	 */
 	public void unbindKey(String key) {
@@ -233,6 +251,7 @@ public class Canvas
 	 * connect the action, for example, "SPACE". The action is a
 	 * KeyboardAction object that will be executed either if the key is
 	 * pressed.
+	 * 
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
@@ -254,6 +273,7 @@ public class Canvas
 	/**
 	 * Remove event handler associated with a given key, for when it is
 	 * pressed.
+	 * 
 	 * @param key The key to remove the event handler.
 	 */
 	public void unbindKeyPressed(String key) {
@@ -270,6 +290,7 @@ public class Canvas
 	 * connect the action, for example, "SPACE". The action is a
 	 * KeyboardAction object that will be executed either if the key is
 	 * released.
+	 * 
 	 * @param key The key to bind the action to.
 	 * @param action The KeyboardAction object that will respond to the
 	 * 				event.
@@ -291,6 +312,7 @@ public class Canvas
 	/**
 	 * Remove event handler associated with a given key, for when it is
 	 * released.
+	 * 
 	 * @param key The key to remove the event handler.
 	 */
 	public void unbindKeyReleased(String key) {
@@ -300,9 +322,10 @@ public class Canvas
 		im.remove(ks);
 		am.remove("released"+key);
 	}
-		
+	
 	/**
 	 * Draw a text in the specified position.
+	 * 
 	 * @param x The x coordinate.
 	 * @param y The y coordinate.
 	 * @param size The size of the text.

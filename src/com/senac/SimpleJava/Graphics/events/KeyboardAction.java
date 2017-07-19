@@ -1,7 +1,7 @@
 package com.senac.SimpleJava.Graphics.events;
 
 /**
- * Interface to implement object that will respond to keyboard events.
+ * Interface to implement objects that will respond to keyboard events.
  */
 public interface KeyboardAction {
 	/**
