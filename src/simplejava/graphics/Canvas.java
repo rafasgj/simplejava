@@ -6,8 +6,6 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
@@ -18,7 +16,6 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
 import simplejava.graphics.events.KeyboardAction;
-import simplejava.graphics.events.KeyboardTypingEvent;
 
 /**
  * Implements a Canvas where objects are drawn to.
